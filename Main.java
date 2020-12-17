@@ -10,9 +10,8 @@ public class Main {
         student1.enrollCourse();
         student2.enrollCourse();
         Student.displayClass();
-        student1.displayBalance(); 
-        student2.displayBalance();
-        
+        student1.showStatus();
+        student2.showStatus();
         
         
     }

@@ -11,6 +11,7 @@ public class Student{
     private int balance;
     private int tuition;
     private int passLength = 4;
+    private String balanceStat;
     private static int defaultCourseSize = 20;
     public static String[] history101 = new String[defaultCourseSize];
     public static String[] math101 = new String[defaultCourseSize];
@@ -35,9 +36,10 @@ public class Student{
         //System.out.println(this.name + "\n" + this.year + "\n" + this.gradeLevel);
     
         this.id = generateID(passLength);
-        System.out.println("Your ID: " + this.gradeLevel  + this.id);
+        this.id = this.gradeLevel  + this.id;
+        System.out.println("Your ID: " + this.id);
         
-
+        
 
     
     
@@ -157,11 +159,6 @@ public class Student{
 
     //Displays Status of course
     public static void displayClass(){
-        // System.out.println("Math: " + Arrays.toString(math101));
-        // System.out.println("History: " + Arrays.toString(history101));
-        // System.out.println("Chemistry: " + Arrays.toString(chemistry101));
-        // System.out.println("Computer Science: " + Arrays.toString(compsci101));
-        // System.out.println("English: " + Arrays.toString(english101));
         
         //Math
         int m = 0;
@@ -171,9 +168,9 @@ public class Student{
             m++;
         }
         if(tempMath.length() - 2 <= 0){
-            System.out.println("Math is empty.");
+            System.out.println("===============================================\nMath is empty.");
         } else {
-            tempMath = "Math class: " + tempMath.substring(0, tempMath.length() - 2);
+            tempMath = "===============================================\nMath class: " + tempMath.substring(0, tempMath.length() - 2);
         }
         System.out.println(tempMath);
 
@@ -191,7 +188,7 @@ public class Student{
         }
         System.out.println(tempHistory);
 
-
+        //Chemistry
         int chemIndex = 0;
         String tempChem = "";
         while(chemistry101[chemIndex] != null){
@@ -204,10 +201,9 @@ public class Student{
             tempChem = "Chemistry class: " + tempChem.substring(0, tempChem.length() - 2);
         }
         
-        
         System.out.println(tempChem);
 
-
+        //Computer Science
         int cs = 0;
         String tempCS = "";
         while(compsci101[cs] != null){
@@ -221,7 +217,7 @@ public class Student{
         }
         System.out.println(tempCS);
 
-
+        //English
         int e = 0;
         String tempEng = "";
         while(english101[e] != null){
@@ -262,6 +258,16 @@ public class Student{
 
 
     //Show status
+    public void showStatus(){
+        
+        if(this.balance < 0){
+            this.balanceStat = "Total Balance: " + "$" + this.balance + " (In debt)"; 
+        } else {
+            this.balanceStat = "Total Balance: " + "$" + this.balance;
+        }
+
+        System.out.println("===============================================\nName: " + this.name + "\nStudent ID: " + this.id + "\n" + this.balanceStat + "\n");
+    }
 
 
 }
